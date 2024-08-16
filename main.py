@@ -2,6 +2,7 @@
 ###and OpenAI for formatting, syntax checking, and help with error checking###
 
 import os
+import json
 from typing import Final
 from dotenv import load_dotenv
 from discord import Intents, Client, Message
@@ -17,7 +18,17 @@ TWITCH_ACCESS_TOKEN: Final[str] = os.getenv("TWITCH_ACCESS_TOKEN")
 TWITCH_CLIENT_ID: Final[str] = os.getenv("TWITCH_CLIENT_ID")
 TWITCH_USERNAME: Final[str] = os.getenv("TWITCH_USERNAME")
 WCL_TOKEN: Final[str] = os.getenv("LOGS_TOKEN")
-TARGET_CHANNEL_ID: Final[int] = XXXXXXXXXXXXXX  # Replace with the channel ID you want the bot to listen to
+
+# Load configuration from config.json
+with open('config.json', 'r') as config_file:
+    config = json.load(config_file)
+
+# Load values from config.json
+TARGET_CHANNEL_ID: Final[int] = int(config["TARGET_CHANNEL_ID"])
+GUILD_NAME: Final[str] = config["GUILD_NAME"]
+SERVER_NAME: Final[str] = config["SERVER_NAME"]
+SERVER_REGION: Final[str] = config["SERVER_REGION"]
+COMMAND_PREFIX: Final[str] = config["COMMAND_PREFIX"]
 
 # Bot setup
 intents: Intents = Intents.default()
@@ -59,11 +70,9 @@ async def get_recent_broadcast(user_id: str):
 
 # Messaging
 async def get_recent_boss_pull() -> str:
-
-    #replace guild name, server name, server region with your respective information
-    guild_name = urllib.parse.quote("Guild Name")
-    server_name = urllib.parse.quote("ServerName")
-    server_region = "REGION (US, EU etc)"
+    guild_name = urllib.parse.quote(GUILD_NAME)
+    server_name = urllib.parse.quote(SERVER_NAME)
+    server_region = SERVER_REGION
     api_key = WCL_TOKEN
     
     # Get the most recent report
@@ -141,7 +150,7 @@ async def on_message(message: Message) -> None:
 
     print(f"[{channel}] {username}: '{user_message}'")
 
-    if user_message.startswith('!bm'):
+    if user_message.startswith(COMMAND_PREFIX):
         api_response = await get_recent_boss_pull()
 
         print(f"API Response: {api_response}")
