@@ -1,0 +1,6 @@
+###ensures sensitive files and venv arent tracked by version control
+
+.env
+myenv/
+__pycache__/
+*.pyc
