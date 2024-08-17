@@ -33,7 +33,7 @@ On Twitch you need to make a twitch developer account and go to your developer c
 
 replacing the client Id and client secret youll get back a JSON response that includes the access token.
 
-For Warcraftlogs, you need to go to warcraftlogs client management page and mage a client. Again call it what you want, use whatever redirect URL (http://127.0.0.1:5000/callback for example) and click create. Youll then have access to your token and can find it in your personal settings page if you scroll all the way down and its listed as "V1 Client Key: "
+For Warcraftlogs, you need to go to warcraftlogs client management page and make a client. Again call it what you want, use whatever redirect URL (http://127.0.0.1:5000/callback for example) and click create. Youll then have access to your token and can find it in your personal settings page if you scroll all the way down and its listed as "V1 Client Key: "
 
 ### 5. Configuration
 
@@ -59,7 +59,7 @@ Here’s an example `config.json` file:
 ```
 
 ### 6. Running the bot
-I use Windows Subsystem for Linux with Ubuntu 24.04, if you are using a bash terminal, just ype python3 main.py and your bot should see the bot coming online in the command terminal. The bot should also now appear online in discord. Make sure you give the bot the roles required to see and post in whatever channel you want it to listen to. Now go to the channel you set it up for, use your command, and while logging and streaming, it should give you the last pull in WCL and a link to your twitch stream timestamped to that pull. Once your done streaming and logging, it will pull the last fight log and the stream associated.
+I use Windows Subsystem for Linux with Ubuntu 24.04, if you are using a bash terminal, just type python3 main.py and you should see the bot coming online in the command terminal. The bot should also now appear online in discord. Make sure you give the bot the roles required to see and post in whatever channel you want it to listen to. Now go to the channel you set it up for, use your command, and while logging and streaming, it should give you the last pull in WCL and a link to your twitch stream timestamped to that pull. Once your done streaming and logging, it will pull the last fight log and the stream associated.
 
 ### Contributions
 Again, huge thanks to @Idently on youtube for help with the discord bot setup, @Jtk.21 on discord for help with the retreival of fight start times and the offset used for twitch
