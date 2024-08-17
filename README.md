@@ -57,6 +57,19 @@ Here’s an example `config.json` file:
 }
 
 ```
+Youll also need to create a .env file to store your tokens, ID's and secrets in.
+Run
+    
+    cp .env.example .env
+and you should get a .env file where you can input your tokens, ID's and secrets. It should look like this
+```
+DISCORD_TOKEN = XXXXXXXXXXX
+TWITCH_ACCESS_TOKEN = XXXXXXXXXXX
+TWITCH_CLIENT_ID = XXXXXXXXX
+TWITCH_CLIENT_SECRET = XXXXXXXXXXXXX
+TWITCH_USERNAME = XXXXXXXXXX
+LOGS_TOKEN = XXXXXXXXXXX
+```
 
 ### 6. Running the bot
 I use Windows Subsystem for Linux with Ubuntu 24.04, if you are using a bash terminal, just ype python3 main.py and your bot should see the bot coming online in the command terminal. The bot should also now appear online in discord. Make sure you give the bot the roles required to see and post in whatever channel you want it to listen to. Now go to the channel you set it up for, use your command, and while logging and streaming, it should give you the last pull in WCL and a link to your twitch stream timestamped to that pull. Once your done streaming and logging, it will pull the last fight log and the stream associated.
